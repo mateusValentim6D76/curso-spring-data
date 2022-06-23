@@ -15,4 +15,22 @@ public class UnidadeTrabalho {
 	private Integer id;
 	private String descricao;
 	private String endereco;
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	public String getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+	@Override
+	public String toString() {
+		return "UnidadeTrabalho [id=" + id + ", descricao=" + descricao + ", endereco=" + endereco + "]";
+	}
+	
+	
 }
