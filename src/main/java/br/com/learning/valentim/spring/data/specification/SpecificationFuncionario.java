@@ -1,4 +1,4 @@
-package br.com.learning.valentim.spring.data.repository;
+package br.com.learning.valentim.spring.data.specification;
 
 import org.springframework.data.jpa.domain.Specification;
 
