@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import br.com.learning.valentim.spring.data.service.CargoService;
 import br.com.learning.valentim.spring.data.service.FuncionarioService;
+import br.com.learning.valentim.spring.data.service.RelatorioFuncionarioDinamico;
 import br.com.learning.valentim.spring.data.service.RelatorioService;
 import br.com.learning.valentim.spring.data.service.UnidadeTrabalhoService;
 
@@ -26,12 +27,16 @@ public class SpringDataApplication implements CommandLineRunner {
 
 	private final UnidadeTrabalhoService unidadeTrabalhoService;
 
+	private final RelatorioFuncionarioDinamico relatorioFuncionarioDinamico;
+
 	public SpringDataApplication(CargoService cargoService, RelatorioService relatoriosService,
-			FuncionarioService funcionarioService, UnidadeTrabalhoService unidadeTrabalhoService) {
+			FuncionarioService funcionarioService, UnidadeTrabalhoService unidadeTrabalhoService,
+			RelatorioFuncionarioDinamico relatorioFuncionarioDinamico) {
 		this.cargoService = cargoService;
 		this.relatoriosService = relatoriosService;
 		this.funcionarioService = funcionarioService;
 		this.unidadeTrabalhoService = unidadeTrabalhoService;
+		this.relatorioFuncionarioDinamico = relatorioFuncionarioDinamico;
 	}
 
 	public static void main(String[] args) {
@@ -49,6 +54,7 @@ public class SpringDataApplication implements CommandLineRunner {
 			System.out.println("2 - Funcionario");
 			System.out.println("3 - Unidade");
 			System.out.println("4 - Relatorios");
+			System.out.println("5 - Relatorios dinamicos");
 
 			Integer function = scanner.nextInt();
 
@@ -64,6 +70,9 @@ public class SpringDataApplication implements CommandLineRunner {
 				break;
 			case 4:
 				relatoriosService.inicial(scanner);
+				break;
+			case 5:
+				relatorioFuncionarioDinamico.inicial(scanner);
 				break;
 			default:
 				System.out.println("Finalizando");

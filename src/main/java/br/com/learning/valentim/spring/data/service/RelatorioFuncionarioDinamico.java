@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Service;
 
 import br.com.learning.valentim.spring.data.orm.Funcionario;
 import br.com.learning.valentim.spring.data.repository.FuncionarioRepository;
 import br.com.learning.valentim.spring.data.specification.SpecificationFuncionario;
 
+@Service
 public class RelatorioFuncionarioDinamico {
 
 	private final FuncionarioRepository funcionarioRepository;
@@ -56,5 +58,8 @@ public class RelatorioFuncionarioDinamico {
 				.findAll(Specification.where(SpecificationFuncionario.nome(nome)).or(SpecificationFuncionario.cpf(cpf))
 						.or(SpecificationFuncionario.salario(salario))
 						.or(SpecificationFuncionario.dataContratacao(dataContratacao)));
+		
+		funcionarios.forEach(System.out::println);
 	}
+
 }
