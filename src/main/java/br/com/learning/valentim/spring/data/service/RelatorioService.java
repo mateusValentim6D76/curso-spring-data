@@ -8,6 +8,7 @@ import java.util.Scanner;
 import org.springframework.stereotype.Service;
 
 import br.com.learning.valentim.spring.data.orm.Funcionario;
+import br.com.learning.valentim.spring.data.orm.FuncionarioProjection;
 import br.com.learning.valentim.spring.data.repository.FuncionarioRepository;
 
 @Service
@@ -27,6 +28,9 @@ public class RelatorioService {
 			System.out.println("Qual ação de cargo deseja executar ?");
 			System.out.println("0 - Sair");
 			System.out.println("1 - Busca funcionario nome");
+			System.out.println("2 - Busca funcionario nome, data contratacao, e salario maior");
+			System.out.println("3 - Busca funcionario nome data contratacao");
+			System.out.println("4 - Pesquisa funcionario salario");
 
 			int action = sc.nextInt();
 
@@ -39,6 +43,9 @@ public class RelatorioService {
 				break;
 			case 3:
 				buscaFuncionarioDataContratacao(sc);
+				break;
+			case 4:
+				pesquisaFuncionarioSalario();
 				break;
 			default:
 				system = false;
@@ -78,5 +85,11 @@ public class RelatorioService {
 
 		List<Funcionario> list = funcionarioRepository.findDataContratacaoMaior(localDate);
 		list.forEach(System.out::println);
+	}
+	
+	private void pesquisaFuncionarioSalario() {
+		List<FuncionarioProjection> list = funcionarioRepository.findFuncionarioSalario();
+		list.forEach(f -> System.out.println("Funcionario: Id: " + f.getId() 
+		+ " | nome: " + f.getNome() + " | salario: " + f.getSalario()));
 	}
 }
