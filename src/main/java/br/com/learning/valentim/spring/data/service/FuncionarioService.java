@@ -156,7 +156,7 @@ public class FuncionarioService {
 		
 		Integer page = sc.nextInt();
 		
-		PageRequest pageable =  PageRequest.of(page, 5, Sort.unsorted());
+		PageRequest pageable =  PageRequest.of(page, 5, Sort.by(Sort.Order.asc("nome")));
 		Page<Funcionario> funcionarios = funcionarioRepository.findAll(pageable);
 		
 		System.out.println(funcionarios);
